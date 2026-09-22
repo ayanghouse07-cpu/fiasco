@@ -7,5 +7,8 @@ export default defineConfig({
     host: true,
     port: 5173,
     strictPort: true,
+    // Alloy proxies the preview through a generated *.modal.host domain,
+    // so Vite's Host header check must accept it.
+    allowedHosts: true,
   },
 });
