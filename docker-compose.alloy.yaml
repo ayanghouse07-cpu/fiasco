@@ -1,0 +1,16 @@
+services:
+  web:
+    image: node:22-bookworm
+    working_dir: /workspace
+    network_mode: host
+    environment:
+      IS_ALLOY: ${IS_ALLOY:-false}
+      HOST: 0.0.0.0
+      PORT: 5173
+    volumes:
+      - .:/workspace
+      - fiasco-node-modules:/workspace/node_modules
+    command: bash -lc "npm install && npm run dev -- --host 0.0.0.0 --port 5173"
+
+volumes:
+  fiasco-node-modules:
